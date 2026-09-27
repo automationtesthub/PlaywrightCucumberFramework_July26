@@ -6,6 +6,7 @@ module.exports = {
         ],
         require: [
             "support/**/*.ts",
+            "hooks/**/*.ts",
             "step-definitions/**/*.ts"
         ],
 

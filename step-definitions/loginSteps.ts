@@ -5,6 +5,8 @@ import { expect } from "@playwright/test";
 import { LoginPage } from "../pages/loginpage";
 import { HomePage } from "../pages/homepage";
 
+import { CustomWorld } from '../support/world';
+
 
 let page:any;
 let lp:LoginPage;
@@ -27,13 +29,13 @@ Given('user should be on login page',async function () {
   
 });
 
-When('user enters the valid credentials',async function () {
+When('user enters the valid credentials',async function (this: CustomWorld) {
 
     // await page.locator("//input[@name='user_name']").fill("admin");
     // await page.locator("//input[@name='user_password']").fill("admin");
     // await page.locator("//input[@name='Login']").click();
 
-    await lp.login("admin","admin");
+    await lp.login(this.dt.username,this.dt.password);
  
 });
 
@@ -50,12 +52,12 @@ Then('user can see the logout link',async function () {
   await expect(hp.verifyLogout()).toBeTruthy();
 });
 
-When('user enters the invalid credentials',async  function () {
+When('user enters the invalid credentials',async  function (this: CustomWorld) {
 
     // await page.locator("//input[@name='user_name']").fill("admin123");
     // await page.locator("//input[@name='user_password']").fill("admin");
     // await page.locator("//input[@name='Login']").click();
-     await lp.login("admin123","admin");
+     await lp.login(this.dt.username,this.dt.password);
   
 });
 
