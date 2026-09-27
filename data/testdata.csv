@@ -1,0 +1,7 @@
+TestCase,username,password
+TC01,admin,admin123
+TC02,admin,admin
+TC03,,
+TC04,invaliduser,admin
+TC05,admin,invalidpassword
+TC06,,

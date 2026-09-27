@@ -1,0 +1,26 @@
+{
+    "TC01": {
+        "username": "admin",
+        "password": "admin123"
+    },
+    "TC02": {
+        "username": "admin",
+        "password": "admin"
+    },
+    "TC03": {
+        
+    },
+    "TC04": {
+        "username": "invaliduser",
+        "password": "admin"
+    },
+    "TC05": {
+        "username": "admin",
+        "password": "invalidpassword"
+    },
+    "TC06": {
+        "username": "",
+        "password": ""
+    }
+       
+}
