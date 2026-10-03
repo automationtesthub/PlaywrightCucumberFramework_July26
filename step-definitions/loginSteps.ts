@@ -1,39 +1,27 @@
 import {Given,When, Then} from "@cucumber/cucumber"
-import { channel } from "node:diagnostics_channel";
-import { chromium } from "playwright";
+
 import { expect } from "@playwright/test";
-import { LoginPage } from "../pages/loginpage";
-import { HomePage } from "../pages/homepage";
 
 
-let page:any;
-let lp:LoginPage;
-let hp:HomePage;
+import { CustomWorld } from '../support/world';
 
-Given('user should be on login page',async function () {
 
-    const browser = await chromium.launch({
-        channel: "chrome",
-        headless: false
-    });
-    const context = await browser.newContext();
 
-    page = await context.newPage();
 
-    await page.goto("http://localhost:100");
-     lp = new LoginPage(page);
-     hp = new HomePage(page);
+
+Given('user should be on login page',async function (this: CustomWorld) {
+
+    
+
+    await this.page.goto("http://localhost:100");
+    
     
   
 });
 
-When('user enters the valid credentials',async function () {
+When('user enters the valid credentials',async function (this: CustomWorld) {
 
-    // await page.locator("//input[@name='user_name']").fill("admin");
-    // await page.locator("//input[@name='user_password']").fill("admin");
-    // await page.locator("//input[@name='Login']").click();
-
-    await lp.login("admin","admin");
+       await this.pom.getLoginPage().login(this.dt.username,this.dt.password);
  
 });
 
@@ -41,38 +29,36 @@ Then('user should be navigated to home page',async function () {
  
     //await expect( page.locator("//a[@class='currentTab'][text()='Home']")).toBeVisible();
 
-    await expect(hp.verifyHome()).toBeTruthy();
+    await expect(this.pom.getHomePage().verifyHome()).toBeTruthy();
     
 });
 
 Then('user can see the logout link',async function () {
  //await expect( page.locator("//a[text()='Logout']")).toBeVisible();
-  await expect(hp.verifyLogout()).toBeTruthy();
+  await expect(this.pom.getHomePage().verifyLogout()).toBeTruthy();
 });
 
-When('user enters the invalid credentials',async  function () {
+When('user enters the invalid credentials',async  function (this: CustomWorld) {
 
     // await page.locator("//input[@name='user_name']").fill("admin123");
     // await page.locator("//input[@name='user_password']").fill("admin");
     // await page.locator("//input[@name='Login']").click();
-     await lp.login("admin123","admin");
+     await this.pom.getLoginPage().login(this.dt.username,this.dt.password);
   
 });
 
 Then('user should be navigated to login page',async function () {
  //await expect( page.locator("//input[@name='user_name']")).toBeVisible();
-  await expect(lp.verifyUsername()).toBeTruthy();
+  await expect(this.pom.getLoginPage().verifyUsername()).toBeTruthy();
 });
 
 Then('user can see the login error message',async function () {
   //await expect( page.locator("//*[contains(text(),'You must specify a valid username and password.')]")).toBeVisible();
 
-   await expect(lp.verifyErrorMessage()).toBeTruthy();
+   await expect(this.pom.getLoginPage().verifyErrorMessage()).toBeTruthy();
 });
 
-Then('close the browser',async function () {
-  await page.close();
-});
+
 
 When('user enters the userid as {string} and password as {string} invalid credentials',async function (uid, pwd) {
 //   await page.locator("//input[@name='user_name']").fill(uid);
@@ -80,31 +66,7 @@ When('user enters the userid as {string} and password as {string} invalid creden
 //     await page.locator("//input[@name='user_password']").fill(pwd);
 //     await page.locator("//input[@name='Login']").click();
 
-     await lp.login(uid,pwd);
+     await this.pom.getLoginPage().login(uid,pwd);
 });
 
 
-When('user enter the lastname as {string} and company as {string} and click on save button',async function (string, string2, dataTable) {
-
-   const data = dataTable.hashes();
-
-    for (const row of data) {
-
-        const lname = row.lastname;
-        const comp = row.company;
-
-        await page.locator("//a[text()='New Lead']").click();
-
-        await page.locator("//input[@name='lastname']")
-            .fill(lname);
-
-        await page.locator("//input[@name='company']")
-            .fill(comp);
-
-        await page.locator("//input[@name='button']")
-            .nth(0)
-            .click();
-    }
-
-
-});
