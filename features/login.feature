@@ -10,14 +10,14 @@ Scenario: TC01_valid_login
 When user enters the valid credentials 
 Then user should be navigated to home page
 And user can see the logout link
-#And close the browser
+
 
 @abc
 Scenario: TC02_Invalid_login
 When user enters the invalid credentials 
 Then user should be navigated to login page
 And user can see the login error message
-#And close the browser
+
 
 
 Scenario Outline: Invalid login with different set of data
