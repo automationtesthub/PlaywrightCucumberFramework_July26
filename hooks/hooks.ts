@@ -1,6 +1,8 @@
 import {Before,After} from '@cucumber/cucumber';
 import { CustomWorld } from '../support/world';
 
+import { chromium } from "playwright";
+
 import { ExcelReader } from '../utils/ExcelReader';
 
 
@@ -23,5 +25,20 @@ Before(async function (this: CustomWorld, scenario) {
         "this.dt:",
         this.dt
     );
+
+
+    const browser = await chromium.launch({
+        channel: "chrome",
+        headless: false
+    });
+    const context = await browser.newContext();
+
+    this.page = await context.newPage();
+
+    this.initializePageObjects();
    
+});
+
+After(async function (this: CustomWorld) {
+    await this.page.close();
 });
