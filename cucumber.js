@@ -13,11 +13,11 @@ module.exports = {
             "ts-node/register"
         ],
 
-        format: [
+       format: [
             "progress",
-            "html:reports/cucumber-report.html"
+            "html:reports/cucumber-report.html",
+            "json:reports/cucumber-report.json"
         ],
-
         publishQuiet: true
     }
 };
