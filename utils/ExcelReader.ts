@@ -5,10 +5,10 @@ export class ExcelReader {
 
     private data: Record<string, any>[] = [];
 
-    constructor(sheetName: string) {
-
+    constructor() {
+       let sheetName: string = "Sheet1";
         // Read Excel file
-        const workbook = XLSX.readFile("C:/Course/Playwright_typescript/PlaywrightJuly2026/TDDFramework/data/testdata.xlsx");
+        const workbook = XLSX.readFile("C:\\Course\\Playwright_typescript\\PlaywrightJuly2026\\PlaywrightCucumberFramework_July26\\data\\testdata.xlsx");
 
         // Get worksheet
         const worksheet = workbook.Sheets[sheetName];
