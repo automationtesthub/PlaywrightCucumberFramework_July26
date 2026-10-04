@@ -12,7 +12,7 @@ Then user should be navigated to home page
 And user can see the logout link
 
 
-@abc
+@abc1
 Scenario: TC02_Invalid_login
 When user enters the invalid credentials 
 Then user should be navigated to login page
