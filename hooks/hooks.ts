@@ -29,7 +29,7 @@ Before(async function (this: CustomWorld, scenario) {
 
     const browser = await chromium.launch({
         channel: "chrome",
-        headless: false
+        headless: true
     });
     const context = await browser.newContext();
 
