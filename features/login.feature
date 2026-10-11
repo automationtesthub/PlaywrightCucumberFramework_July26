@@ -17,6 +17,7 @@ Scenario: TC02_Invalid_login
 When user enters the invalid credentials 
 Then user should be navigated to login page
 And user can see the login error message
+#And close the browser
 
 
 

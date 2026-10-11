@@ -1,0 +1,97 @@
+[
+  {
+    "description": "",
+    "elements": [
+      {
+        "description": "",
+        "id": "login-functionality;tc02_invalid_login",
+        "keyword": "Scenario",
+        "line": 16,
+        "name": "TC02_Invalid_login",
+        "steps": [
+          {
+            "result": {
+              "status": "passed",
+              "duration": 534473399
+            },
+            "keyword": "Before",
+            "hidden": true
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 208224400
+            },
+            "arguments": [],
+            "keyword": "Given ",
+            "line": 5,
+            "name": "user should be on login page",
+            "match": {
+              "location": "step-definitions\\loginSteps.ts:12"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 2399681799
+            },
+            "arguments": [],
+            "keyword": "When ",
+            "line": 17,
+            "name": "user enters the invalid credentials",
+            "match": {
+              "location": "step-definitions\\loginSteps.ts:41"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 12779799
+            },
+            "arguments": [],
+            "keyword": "Then ",
+            "line": 18,
+            "name": "user should be navigated to login page",
+            "match": {
+              "location": "step-definitions\\loginSteps.ts:50"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 3486499
+            },
+            "arguments": [],
+            "keyword": "And ",
+            "line": 19,
+            "name": "user can see the login error message",
+            "match": {
+              "location": "step-definitions\\loginSteps.ts:55"
+            }
+          },
+          {
+            "result": {
+              "status": "passed",
+              "duration": 591499
+            },
+            "keyword": "After",
+            "hidden": true
+          }
+        ],
+        "tags": [
+          {
+            "name": "@abc1",
+            "line": 15
+          }
+        ],
+        "type": "scenario"
+      }
+    ],
+    "id": "login-functionality",
+    "line": 2,
+    "keyword": "Feature",
+    "name": "Login Functionality",
+    "tags": [],
+    "uri": "features\\login.feature"
+  }
+]

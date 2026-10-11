@@ -6,6 +6,8 @@ import { chromium } from "playwright";
 import { ExcelReader } from '../utils/ExcelReader';
 
 
+
+
 Before(async function (this: CustomWorld, scenario) {
 
     // Get scenario name
@@ -27,18 +29,22 @@ Before(async function (this: CustomWorld, scenario) {
     );
 
 
-    const browser = await chromium.launch({
-        channel: "chrome",
+     this.browser = await chromium.launch({
+        channel: 'chrome',
         headless: false
     });
-    const context = await browser.newContext();
 
-    this.page = await context.newPage();
+    this.context = await this.browser.newContext();
+
+    this.page = await this.context.newPage();
 
     this.initializePageObjects();
    
 });
 
+
 After(async function (this: CustomWorld) {
-    await this.page.close();
+    console.log("After hook: scenario finished");
+    // Avoid closing the browser here because the page is still needed for the final assertions.
+    // The browser is created per scenario in Before and is left alive for the full scenario lifecycle.
 });

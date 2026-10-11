@@ -25,12 +25,12 @@ export class HomePage
 
    
 
-    async verifyLogout()
+    async verifyLogout():Promise<boolean>
     {
        return await this.page.locator(this.loc_tb_logout).isVisible();
     }
 
-     async verifyHome()
+     async verifyHome():Promise<boolean>
     {
        return await this.page.locator(this.loc_tb_home).isVisible();
     }

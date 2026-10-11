@@ -1,5 +1,6 @@
 import {setWorldConstructor,World} from '@cucumber/cucumber';
 import { PageObjectManager } from '../pages/PageObjectManager';
+import { Browser, BrowserContext } from 'playwright';
 
 export class CustomWorld extends World {
 
@@ -8,8 +9,12 @@ export class CustomWorld extends World {
     dt!: Record<string, any>;  
 
     page!: any;
+    browser!: Browser;
+    context!: BrowserContext;
 
      pom!: PageObjectManager;
+
+   
 
 
     initializePageObjects(): void {

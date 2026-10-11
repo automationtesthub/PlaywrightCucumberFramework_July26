@@ -31,16 +31,16 @@ When('user enter the lastname as {string} and company as {string} and click on s
 });
 
 
-When('user click on new lead link', async function () {
+When('user click on new lead link', async function (this: CustomWorld) {
   
   await this.pom.getHomePage().clickNewLead();
 });
 
-When('enter lastname and company name and click on save button', async function () {
+When('enter lastname and company name and click on save button', async function (this: CustomWorld) {
   await this.pom.getLeadPage().Create_Lead(this.dt.lastname,this.dt.company);
 });
 
-Then('lead should be created successfully', async function () {
+Then('lead should be created successfully', async function (this: CustomWorld ) {
    
   await this.pom.getLeadPage().verifyLeadCreation();
 });

@@ -25,7 +25,7 @@ When('user enters the valid credentials',async function (this: CustomWorld) {
  
 });
 
-Then('user should be navigated to home page',async function () {
+Then('user should be navigated to home page',async function (this: CustomWorld) {
  
     //await expect( page.locator("//a[@class='currentTab'][text()='Home']")).toBeVisible();
 
@@ -33,7 +33,7 @@ Then('user should be navigated to home page',async function () {
     
 });
 
-Then('user can see the logout link',async function () {
+Then('user can see the logout link',async function (this: CustomWorld) {
  //await expect( page.locator("//a[text()='Logout']")).toBeVisible();
   await expect(this.pom.getHomePage().verifyLogout()).toBeTruthy();
 });
@@ -47,12 +47,12 @@ When('user enters the invalid credentials',async  function (this: CustomWorld) {
   
 });
 
-Then('user should be navigated to login page',async function () {
+Then('user should be navigated to login page',async function (this: CustomWorld) {
  //await expect( page.locator("//input[@name='user_name']")).toBeVisible();
   await expect(this.pom.getLoginPage().verifyUsername()).toBeTruthy();
 });
 
-Then('user can see the login error message',async function () {
+Then('user can see the login error message',async function (this: CustomWorld) {
   //await expect( page.locator("//*[contains(text(),'You must specify a valid username and password.')]")).toBeVisible();
 
    await expect(this.pom.getLoginPage().verifyErrorMessage()).toBeTruthy();
@@ -67,6 +67,12 @@ When('user enters the userid as {string} and password as {string} invalid creden
 //     await page.locator("//input[@name='Login']").click();
 
      await this.pom.getLoginPage().login(uid,pwd);
+});
+
+Then('close the browser',async function (this: CustomWorld) {
+    // Do not close the page/context here. This step is only used to keep the scenario readable;
+    // the browser lifecycle is managed per scenario in the Before/After hooks.
+    console.log('Scenario step complete. Browser remains open until teardown.');
 });
 
 

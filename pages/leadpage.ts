@@ -14,7 +14,7 @@ export class LeadPage
 
 
 
-    async verifyLeadCreation()
+    async verifyLeadCreation():Promise<boolean>
     {
        return await this.page.locator(this.loc_label_leadinfo).isVisible();
     }

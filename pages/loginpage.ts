@@ -18,6 +18,7 @@ export class LoginPage
       await this.setUserName(username);
       await this.setPassword(password);
       await this.clickLoginButton();
+      await this.page.waitForTimeout(2000);
     }
 
     async setUserName(username: string)
@@ -35,19 +36,19 @@ export class LoginPage
        await this.page.locator(this.loc_btn_login).click();
     }
 
-    async verifyErrorMessage()
+    async verifyErrorMessage():Promise<boolean>
     {
-       return await this.page.locator(this.loc_err_msg).isVisible();
+       return await this.page.locator(this.loc_err_msg).isVisible({ timeout: 10000 });
     }
 
-    async verifyLogo()
+    async verifyLogo():Promise<boolean>
     {
-       return await this.page.locator(this.loc_img_logo).isVisible();
+       return await this.page.locator(this.loc_img_logo).isVisible({ timeout: 10000 });
     }
 
-    async verifyUsername()
+    async verifyUsername(): Promise<boolean>
     {
-       return this.page.locator(this.loc_tb_userid).isVisible();
+       return await this.page.locator(this.loc_tb_userid).isVisible({ timeout: 10000 });
     }
 
 
