@@ -16,6 +16,7 @@
     "features/**/*.ts",
     "pages/**/*.ts",
     "step-definitions/**/*.ts",
-    "support/**/*.ts"
+    "support/**/*.ts",
+    "utils/**/*.ts"
   ]
 }
