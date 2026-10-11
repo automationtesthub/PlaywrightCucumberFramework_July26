@@ -31,7 +31,7 @@ Before(async function (this: CustomWorld, scenario) {
 
      this.browser = await chromium.launch({
         channel: 'chrome',
-        headless: false
+        headless: true
     });
 
     this.context = await this.browser.newContext();
